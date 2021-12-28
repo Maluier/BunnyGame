@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/turrets/CatCannonFireF1.png" type="Texture" id=1]
+[ext_resource path="res://assets/turrets/CatCannonF7Shooting.png" type="Texture" id=2]
+[ext_resource path="res://assets/turrets/CatCannonFireF4.png" type="Texture" id=3]
+[ext_resource path="res://assets/turrets/CatCannonFireF7.png" type="Texture" id=4]
+[ext_resource path="res://assets/turrets/CatCannonFireF3.png" type="Texture" id=5]
+[ext_resource path="res://assets/turrets/CatCannonFireF2.png" type="Texture" id=6]
+[ext_resource path="res://assets/turrets/CatCannonFireF5.png" type="Texture" id=7]
+[ext_resource path="res://assets/turrets/CatCannonFireF6.png" type="Texture" id=8]
+[ext_resource path="res://scenes/towers/cat_turret.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "shooting",
+"speed": 16.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.0
+height = 6.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 82, 5.5 )
+
+[node name="cat_turret" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="idle_sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="shooting_sprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( -32, 0 )
+frames = SubResource( 1 )
+animation = "shooting"
+
+[node name="hurt_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+position = Vector2( 2, 1 )
+shape = SubResource( 2 )
+
+[node name="firing_position" type="Node2D" parent="."]
+position = Vector2( -19, 0 )
+
+[node name="fire_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+position = Vector2( -132, 0.5 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="vision" to="." method="_on_vision_area_entered"]
