@@ -26,7 +26,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://scenes/other/globals.gd"
+Globals="*res://scenes/other/globals.tscn"
+SaveScript="*res://scenes/other/save_script.gd"
 
 [debug]
 

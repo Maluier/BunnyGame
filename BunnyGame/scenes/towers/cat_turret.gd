@@ -15,6 +15,18 @@ func set_preview(new_val: bool) -> void:
 		self.modulate = Color8(255,255,255,255)
 	is_preview_tower = new_val
 
+func is_savable():
+	return not is_preview_tower
+
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+	}
+	return save_dict
+
 func _on_vision_area_entered(area: Area2D) -> void:
 	if _fire_timer.is_stopped() and not is_preview_tower:
 		_fire_timer.start(_fire_delay)

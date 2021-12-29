@@ -5,7 +5,7 @@ const TOWER_OFFSET := Vector2(16,16)
 var tower_dictionary := {}
 
 func _ready():
-	pass # Replace with function body.
+	pass
 	
 func _process(delta):
 	if current_preview_tower != null:
@@ -17,6 +17,7 @@ func _process(delta):
 			if not tower_coord in tower_dictionary:
 				tower_dictionary[tower_coord] = current_preview_tower
 				current_preview_tower.set_preview(false)
+				Globals.hayballs -= 30
 			else:
 				current_preview_tower.queue_free()
 			current_preview_tower = null

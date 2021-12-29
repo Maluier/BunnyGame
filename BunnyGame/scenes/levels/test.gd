@@ -18,4 +18,9 @@ func _on_Tower_purchased():
 		new_tower.set_preview(true)
 		turrent_grid.current_preview_tower = new_tower
 		turrent_grid.add_child(new_tower)
-		Globals.hayballs -= 30
+
+func _on_SaveButton_pressed():
+	SaveScript.save_gamestate()
+
+func _on_Load_pressed():
+	SaveScript.load_gamestate()
