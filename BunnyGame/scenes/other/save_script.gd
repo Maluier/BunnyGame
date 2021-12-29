@@ -74,12 +74,13 @@ func load_gamestate():
 			new_object.set(i, node_data[i])
 
 	save_game.close()
-	additional_load_processing()
+	call_deferred("additional_load_processing")
 	
 func additional_load_processing():
 	var turrent_grid = get_node("/root/Test/TurrentGrid")
 	var new_tower_dict = {}
 	for turrent in turrent_grid.get_children():
-		new_tower_dict[turrent_grid.world_to_map(turrent.position)] = turrent
+		if turrent.is_in_group("Turrent"):
+			new_tower_dict[turrent_grid.world_to_map(turrent.position)] = turrent
 	turrent_grid.tower_dictionary = new_tower_dict
 	

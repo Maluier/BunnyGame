@@ -25,7 +25,7 @@ height = 6.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 82, 5.5 )
 
-[node name="cat_turret" type="Node2D" groups=["Persist"]]
+[node name="cat_turret" type="Node2D" groups=["Persist", "Tower"]]
 script = ExtResource( 9 )
 _fire_delay = 2
 

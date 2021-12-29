@@ -21,5 +21,4 @@ func _process(delta):
 			else:
 				current_preview_tower.queue_free()
 			current_preview_tower = null
-		
 
