@@ -1,5 +1,6 @@
 extends Base
 
+onready var _reset_button := $CanvasLayer/UI/Towers/Scoll/Grid/BuyTower
 
 func _ready() -> void:
 	var t := Timer.new()
@@ -12,7 +13,9 @@ func _ready() -> void:
 onready var turrent_grid = $TurrentGrid
 var tower_scene = load("res://scenes/towers/cat_turret.tscn")
 func _on_Tower_purchased():
-	var new_tower = tower_scene.instance()
-	new_tower.set_preview(true)
-	turrent_grid.current_preview_tower = new_tower
-	turrent_grid.add_child(new_tower)
+	if Globals.hayballs >= 30:
+		var new_tower = tower_scene.instance()
+		new_tower.set_preview(true)
+		turrent_grid.current_preview_tower = new_tower
+		turrent_grid.add_child(new_tower)
+		Globals.hayballs -= 30
