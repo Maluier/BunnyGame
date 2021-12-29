@@ -24,6 +24,10 @@ config/name="Bunny Space Game"
 run/main_scene="res://scenes/levels/test.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://scenes/other/globals.gd"
+
 [debug]
 
 gdscript/warnings/return_value_discarded=false
