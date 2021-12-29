@@ -27,6 +27,7 @@ extents = Vector2( 82, 5.5 )
 
 [node name="cat_turret" type="Node2D"]
 script = ExtResource( 9 )
+_fire_delay = 2
 
 [node name="idle_sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
