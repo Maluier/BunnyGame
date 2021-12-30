@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/turrets/CatCannonFireF1.png" type="Texture" id=1]
-[ext_resource path="res://assets/turrets/CatCannonF7Shooting.png" type="Texture" id=2]
 [ext_resource path="res://assets/turrets/CatCannonFireF4.png" type="Texture" id=3]
 [ext_resource path="res://assets/turrets/CatCannonFireF7.png" type="Texture" id=4]
 [ext_resource path="res://assets/turrets/CatCannonFireF3.png" type="Texture" id=5]
@@ -29,14 +28,12 @@ extents = Vector2( 82, 5.5 )
 script = ExtResource( 9 )
 _fire_delay = 2
 
-[node name="idle_sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-
 [node name="shooting_sprite" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( -32, 0 )
 frames = SubResource( 1 )
 animation = "shooting"
+frame = 6
+playing = true
 
 [node name="hurt_box" type="Area2D" parent="."]
 

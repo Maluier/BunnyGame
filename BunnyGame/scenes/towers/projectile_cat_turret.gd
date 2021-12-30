@@ -7,6 +7,9 @@ func _physics_process(delta: float) -> void:
 	position += _speed * _direction * delta
 
 
-
 func _on_projectile_cat_turret_area_entered(area: Area2D) -> void:
 	queue_free()
+
+
+func _on_Timer_timeout() -> void:
+	$Sprite.visible = true

@@ -30,6 +30,7 @@ func save():
 func _on_vision_area_entered(area: Area2D) -> void:
 	if _fire_timer.is_stopped() and not is_preview_tower:
 		_fire_timer.start(_fire_delay)
+		$shooting_sprite.frame = 0
 		var Bullet := projectile.instance()
 		Bullet.global_position = _firing_position.get_global_position()
 		get_parent().add_child(Bullet)
