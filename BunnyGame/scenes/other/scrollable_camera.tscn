@@ -1,7 +1,4 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://scenes/other/scrollable_camera.gd" type="Script" id=1]
+[gd_scene format=2]
 
 [node name="ScrollableCamera" type="Camera2D"]
 current = true
-script = ExtResource( 1 )

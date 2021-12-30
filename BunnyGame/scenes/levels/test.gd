@@ -1,6 +1,5 @@
-extends Base
+extends "res://scenes/levels/base.gd"
 
-onready var _reset_button := $CanvasLayer/UI/Towers/Scoll/Grid/BuyTower
 
 func _ready() -> void:
 	var t := Timer.new()
@@ -8,6 +7,7 @@ func _ready() -> void:
 	add_child(t)
 	t.connect("timeout", self, "_spawn_enemy", [load("res://scenes/enemies/test_enemy.tscn"), "floor"])
 	t.start()
+
 	
 ## Dealing with placing tower
 onready var turrent_grid = $TurrentGrid

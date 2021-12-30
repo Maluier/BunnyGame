@@ -69,28 +69,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Lives" type="Label" parent="CanvasLayer/UI"]
-margin_left = 3.0
-margin_right = 49.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Lives: 10"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hayballs" type="Label" parent="CanvasLayer/UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -132.0
-margin_top = 1.0
-margin_right = -50.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Hayballs: %h"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="area_entered" from="Core" to="." method="_on_core_area_entered"]
