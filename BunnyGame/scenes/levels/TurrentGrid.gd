@@ -23,5 +23,5 @@ func _process(delta):
 				current_preview_tower.queue_free()
 			current_preview_tower = null
 
-func _erase_building_slots(): ##todo
-	pass## tower_dictionary.erase(???)
+func _erase_building_slots(current_position): ##todo
+	tower_dictionary.erase(current_position)

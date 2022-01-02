@@ -4,8 +4,9 @@ export var _fire_delay = 5
 var projectile := preload("res://scenes/towers/projectile_cat_turret.tscn")
 onready var _firing_position = $firing_position
 onready var _fire_timer = $fire_timer
+onready var current_position = Vector2.ZERO
 
-signal disable_cat_turret ##todo
+signal disable_cat_turret(current_position) ##todo
 
 ## Determine if the tower is for preview while placing only
 var is_preview_tower := false
@@ -40,5 +41,6 @@ func _on_vision_area_entered(area: Area2D) -> void:
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	_health -= 2
 	if _health <= 0:
-		emit_signal("disable_cat_turret") ##todo
+		current_position = position
+		emit_signal("disable_cat_turret", current_position) ##todo
 		queue_free()
