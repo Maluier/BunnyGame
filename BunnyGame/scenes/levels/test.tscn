@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/levels/base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/backgrounds/test.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://themes/level.tres" type="Theme" id=4]
 [ext_resource path="res://scenes/levels/TurrentGrid.gd" type="Script" id=5]
 [ext_resource path="res://scenes/levels/UI.gd" type="Script" id=6]
+[ext_resource path="res://scenes/other/countdown_clock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/levels/Core.gd" type="Script" id=8]
 
 [node name="Test" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -23,6 +25,8 @@ script = ExtResource( 5 )
 
 [node name="Core" parent="." index="3"]
 position = Vector2( 336, 140 )
+script = ExtResource( 8 )
+damage = 9999
 
 [node name="HUD" type="Control" parent="CanvasLayer" index="0"]
 margin_right = 321.0
@@ -55,6 +59,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Root" parent="CanvasLayer/HUD" index="2" instance=ExtResource( 7 )]
+position = Vector2( 124, 14 )
+rotation = -1.57079
+scale = Vector2( 0.33, -0.33 )
 
 [node name="UI" parent="CanvasLayer" index="1"]
 margin_bottom = -18.0
@@ -94,6 +103,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="disable_build_mode" from="CanvasLayer/HUD/Root" to="CanvasLayer/UI" method="_on_Root_disable_build_mode"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyTower" to="." method="_on_Tower_purchased"]
 [connection signal="pressed" from="CanvasLayer/UI/Save" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Load" to="." method="_on_Load_pressed"]

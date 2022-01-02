@@ -3,9 +3,10 @@ extends TileMap
 var current_preview_tower = null
 const TOWER_OFFSET := Vector2(16,16)
 var tower_dictionary := {}
+var _cat_tower := preload("res://scenes/towers/cat_turret.tscn") ##todo
 
 func _ready():
-	pass
+	_cat_tower.connect("disable_cat_turret", self, "_erase_building_slots") ##todo
 	
 func _process(delta):
 	if current_preview_tower != null:
@@ -22,3 +23,5 @@ func _process(delta):
 				current_preview_tower.queue_free()
 			current_preview_tower = null
 
+func _erase_building_slots(): ##todo
+	pass## tower_dictionary.erase(???)

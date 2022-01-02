@@ -1,5 +1,7 @@
 extends Node2D
 
+signal disable_build_mode(trigger_bool)
+
 onready var clock_surface = $ClockTime
 var time_diff = 0.05
 var full_cycle = 30
@@ -28,9 +30,10 @@ func _on_Timer_timeout():
 	if current_time <= 0:
 		$Timer.stop()
 		if is_building:
-			$ClockTime.color = Color8(169,48,0)
-		else:
 			$ClockTime.color = Color8(0,181,229)
+		else:
+			$ClockTime.color = Color8(169,48,0)
+		emit_signal("disable_build_mode", is_building)
 		is_building = not is_building
 		current_time = full_cycle
 		$Timer.start()
