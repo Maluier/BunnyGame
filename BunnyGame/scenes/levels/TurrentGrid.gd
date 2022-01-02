@@ -1,13 +1,15 @@
 extends TileMap
 
+var cat_turret = preload("res://scenes/towers/cat_turret.tscn")
+
 var current_preview_tower = null
 const TOWER_OFFSET := Vector2(16,16)
 var tower_dictionary := {}
-var _cat_tower := preload("res://scenes/towers/cat_turret.tscn") ##todo
-var instanced_ct := _cat_tower.instance()
-
+var _new_cat_turret = null ##todo
+ 
 func _ready():
-	instanced_ct.connect("disable_cat_turret", self, "_erase_building_slots") ##todo
+	if _new_cat_turret != null: ## todo
+		_new_cat_turret.connect("disable_cat_turret(current_position)", self, "_erase_building_slots(current_position)")
 	
 func _process(delta):
 	if current_preview_tower != null:
@@ -17,6 +19,7 @@ func _process(delta):
 		current_preview_tower.position = preview_pos
 		if Input.is_mouse_button_pressed( BUTTON_LEFT ):
 			if not tower_coord in tower_dictionary:
+				_new_cat_turret = cat_turret.instance()
 				tower_dictionary[tower_coord] = current_preview_tower
 				current_preview_tower.set_preview(false)
 				Globals.hayballs -= 30
