@@ -4,9 +4,10 @@ var current_preview_tower = null
 const TOWER_OFFSET := Vector2(16,16)
 var tower_dictionary := {}
 var _cat_tower := preload("res://scenes/towers/cat_turret.tscn") ##todo
+var instanced_ct := _cat_tower.instance()
 
 func _ready():
-	_cat_tower.connect("disable_cat_turret", self, "_erase_building_slots") ##todo
+	instanced_ct.connect("disable_cat_turret", self, "_erase_building_slots") ##todo
 	
 func _process(delta):
 	if current_preview_tower != null:
