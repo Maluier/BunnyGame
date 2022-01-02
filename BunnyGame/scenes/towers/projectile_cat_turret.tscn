@@ -33,7 +33,7 @@ radius = 4.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 7 )
-damage = 16
+damage = 5
 _speed = 32
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -41,7 +41,6 @@ visible = false
 position = Vector2( 0, -1 )
 frames = SubResource( 1 )
 animation = "var3"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

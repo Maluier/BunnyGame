@@ -1,5 +1,4 @@
 extends Node2D
-
 export var _health = 10
 export var _fire_delay = 5
 var projectile := preload("res://scenes/towers/projectile_cat_turret.tscn")
@@ -38,6 +37,6 @@ func _on_vision_area_entered(area: Area2D) -> void:
 
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
-	_health -= 1
+	_health -= 2
 	if _health <= 0:
 		queue_free()

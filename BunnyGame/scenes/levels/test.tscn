@@ -9,7 +9,7 @@
 
 [node name="Test" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-_floor_pos = 162
+_floor_pos = 148
 _air_pos = 128
 
 [node name="Background" parent="." index="0"]
