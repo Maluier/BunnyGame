@@ -1,6 +1,6 @@
 extends TileMap
 
-var cat_turret = preload("res://scenes/towers/cat_turret.tscn")
+var cat_turret = preload("res://scenes/towers/cat_turret.tscn") ## can this be deleted?
 
 var current_preview_tower = null
 const TOWER_OFFSET := Vector2(16,16)

@@ -75,10 +75,16 @@ margin_bottom = 162.0
 [node name="Grid" parent="CanvasLayer/UI/Towers/Scoll" index="0"]
 margin_bottom = 162.0
 
-[node name="BuyTower" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="0"]
+[node name="BuyCT" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="0"]
 margin_right = 18.0
 margin_bottom = 19.0
 text = "1"
+
+[node name="BuyCS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="1"]
+margin_left = 22.0
+margin_right = 40.0
+margin_bottom = 19.0
+text = "2"
 
 [node name="Save" type="Button" parent="CanvasLayer/UI" index="1"]
 anchor_left = 0.16
@@ -104,6 +110,7 @@ __meta__ = {
 }
 
 [connection signal="disable_build_mode" from="CanvasLayer/HUD/Root" to="CanvasLayer/UI" method="_on_Root_disable_build_mode"]
-[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyTower" to="." method="_on_Tower_purchased"]
+[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCT" to="." method="_on_Tower_purchased"]
+[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCS" to="." method="_on_BuyCS_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Save" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Load" to="." method="_on_Load_pressed"]
