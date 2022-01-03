@@ -14,7 +14,6 @@ func _process(delta):
 		var local_mouse = get_local_mouse_position()
 		var tower_coord = self.world_to_map(local_mouse)
 		var preview_pos = self.map_to_world( tower_coord ) + TOWER_OFFSET
-		#print(tower_dictionary)
 		current_preview_tower.position = preview_pos
 		if Input.is_mouse_button_pressed( BUTTON_LEFT ):
 			if not tower_coord in tower_dictionary:

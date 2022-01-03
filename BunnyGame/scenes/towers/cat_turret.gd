@@ -43,6 +43,5 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if is_preview_tower: return
 	_health -= 2
 	if _health <= 0:
-		print("erasing: ",current_coord)
-		emit_signal("disable_cat_turret", self.current_coord) ##todo
+		emit_signal("disable_cat_turret", self.current_coord) 
 		queue_free()
