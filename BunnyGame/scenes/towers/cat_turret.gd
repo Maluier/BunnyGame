@@ -9,6 +9,14 @@ var current_coord : Vector2 = Vector2.ZERO
 
 signal disable_cat_turret(current_coord) 
 
+
+func _process(delta: float) -> void:
+		if position.y <= 95:
+			$shooting_sprite.flip_v = true
+		else:
+			$shooting_sprite.flip_v = false
+
+
 ## Determine if the tower is for preview while placing only
 var is_preview_tower := false
 func set_preview(new_val: bool) -> void:
