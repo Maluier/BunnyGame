@@ -41,8 +41,5 @@ func _on_SaveButton_pressed():
 func _on_Load_pressed():
 	SaveScript.load_gamestate()
 
-
-
-
-
-
+func _on_Root_disable_build_mode(trigger_bool):
+	$TurrentGrid.remove_preview()

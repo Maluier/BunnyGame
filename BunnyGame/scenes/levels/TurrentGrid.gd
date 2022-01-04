@@ -27,6 +27,7 @@ func _process(_delta):
 			current_preview_tower = null
 
 func remove_preview():
+	current_preview_tower.queue_free()
 	current_preview_tower = null
 
 func _erase_building_slots(current_position): 

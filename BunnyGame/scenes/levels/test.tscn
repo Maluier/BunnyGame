@@ -115,6 +115,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="disable_build_mode" from="CanvasLayer/HUD/Root" to="." method="_on_Root_disable_build_mode"]
 [connection signal="disable_build_mode" from="CanvasLayer/HUD/Root" to="CanvasLayer/UI" method="_on_Root_disable_build_mode"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCT" to="." method="_on_Tower_purchased"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCS" to="." method="_on_BuyCS_pressed"]
