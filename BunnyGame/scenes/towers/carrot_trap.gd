@@ -1,8 +1,7 @@
 extends Node2D
+
 export var _health = 10
 export var _fire_delay := 5.0
-var projectile := preload("res://scenes/towers/projectile_cat_turret.tscn")
-onready var _firing_position = $firing_position
 onready var _fire_timer = $fire_timer
 ## Record this tower's coordinate on the grid
 var current_coord : Vector2 = Vector2.ZERO
@@ -42,10 +41,6 @@ func _on_vision_area_entered(area: Area2D) -> void:
 	if _fire_timer.is_stopped() and not is_preview_tower:
 		_fire_timer.start(_fire_delay)
 		$shooting_sprite.frame = 0
-		var Bullet := projectile.instance()
-		Bullet.global_position = _firing_position.get_global_position()
-		get_parent().add_child(Bullet)
-
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if is_preview_tower: return
@@ -53,3 +48,5 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if _health <= 0:
 		emit_signal("disable_cat_turret", self.current_coord) 
 		queue_free()
+
+

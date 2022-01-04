@@ -21,7 +21,7 @@ func _on_Tower_purchased():
 
 var trap_scene = load("res://scenes/towers/carrot_trap.tscn")
 func _on_BuyCS_pressed() -> void:
-	if Globals.hayballs >= 30:
+	if Globals.hayballs >= 50:
 		var new_tower = trap_scene.instance()
 		new_tower.set_preview(true)
 		turrent_grid.current_preview_tower = new_tower

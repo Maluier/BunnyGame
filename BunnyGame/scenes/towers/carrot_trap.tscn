@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/turrets/bunnyGame_carrotTrap7.png" type="Texture" id=6]
 [ext_resource path="res://assets/turrets/bunnyGame_carrotTrap5.png" type="Texture" id=7]
 [ext_resource path="res://assets/turrets/bunnyGame_carrotTrap1.png" type="Texture" id=8]
-[ext_resource path="res://scenes/towers/cat_turret.gd" type="Script" id=9]
+[ext_resource path="res://scenes/towers/carrot_trap.gd" type="Script" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,16 +18,16 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 11.0
-height = 6.0
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 82, 5.5 )
+extents = Vector2( 4.5, 5.5 )
 
-[node name="cat_turret" type="Node2D" groups=["Persist", "Tower"]]
+[node name="carrot_trap" type="Node2D" groups=["Persist", "Tower"]]
 script = ExtResource( 9 )
-_fire_delay = 2
+_health = 40
+_fire_delay = 1.5
 
 [node name="shooting_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -39,13 +39,14 @@ playing = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 2 )
-damage = 0
+damage = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
-position = Vector2( -7, 2 )
-shape = SubResource( 2 )
+position = Vector2( 0, 14 )
+shape = SubResource( 4 )
 
 [node name="firing_position" type="Node2D" parent="."]
+visible = false
 position = Vector2( -19, 0 )
 
 [node name="fire_timer" type="Timer" parent="."]
@@ -57,7 +58,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-position = Vector2( -132, 0.5 )
+position = Vector2( 3.5, 0 )
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]
