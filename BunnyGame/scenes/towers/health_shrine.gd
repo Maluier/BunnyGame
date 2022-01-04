@@ -37,16 +37,12 @@ func save():
 	}
 	return save_dict
 
-func _on_vision_area_entered(area: Area2D) -> void:
-	if _fire_timer.is_stopped() and not is_preview_tower:
-		_fire_timer.start(_fire_delay)
-		$shooting_sprite.frame = 0
-
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if is_preview_tower: return
 	_health -= area.damage
 	if _health <= 0:
 		emit_signal("disable_cat_turret", self.current_coord) 
 		queue_free()
+
 
 

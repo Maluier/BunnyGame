@@ -49,7 +49,7 @@ func _on_vision_area_entered(area: Area2D) -> void:
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if is_preview_tower: return
-	_health -= 2
+	_health -= area.damage
 	if _health <= 0:
 		emit_signal("disable_cat_turret", self.current_coord) 
 		queue_free()

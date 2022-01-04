@@ -16,7 +16,7 @@ func _spawn_enemy(scene: PackedScene, position: String) -> void:
 
 
 func _on_core_area_entered(area: Area2D) -> void:
-	_lives -= 1
+	_lives -= area.damage
 	$CanvasLayer/HUD/Lives.text = "Lives: %d" % _lives
 	if _lives >= 0:
 		pass ## go to game over screen

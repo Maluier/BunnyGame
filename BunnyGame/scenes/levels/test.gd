@@ -27,11 +27,22 @@ func _on_BuyCS_pressed() -> void:
 		turrent_grid.current_preview_tower = new_tower
 		turrent_grid.add_child(new_tower)
 
+var shrine_scene = load("res://scenes/towers/health_shrine.tscn")
+func _on_BuyHS_pressed() -> void:
+	if Globals.hayballs >= 250:
+		var new_tower = shrine_scene.instance()
+		new_tower.set_preview(true)
+		turrent_grid.current_preview_tower = new_tower
+		turrent_grid.add_child(new_tower)
+
 func _on_SaveButton_pressed():
 	SaveScript.save_gamestate()
 
 func _on_Load_pressed():
 	SaveScript.load_gamestate()
+
+
+
 
 
 
