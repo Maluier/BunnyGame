@@ -1,5 +1,7 @@
 extends "res://scenes/levels/base.gd"
 
+var current_price = 0
+signal tower_price(price)
 
 func _ready() -> void:
 	var t := Timer.new()
@@ -7,7 +9,6 @@ func _ready() -> void:
 	add_child(t)
 	t.connect("timeout", self, "_spawn_enemy", [load("res://scenes/enemies/test_enemy.tscn"), "floor"])
 	t.start()
-
 	
 ## Dealing with placing tower
 onready var turrent_grid = $TurrentGrid
@@ -18,6 +19,9 @@ func _on_Tower_purchased():
 		new_tower.set_preview(true)
 		turrent_grid.current_preview_tower = new_tower
 		turrent_grid.add_child(new_tower)
+		current_price = 30
+		emit_signal("tower_price", current_price)
+		
 
 var trap_scene = load("res://scenes/towers/carrot_trap.tscn")
 func _on_BuyCS_pressed() -> void:
@@ -26,6 +30,8 @@ func _on_BuyCS_pressed() -> void:
 		new_tower.set_preview(true)
 		turrent_grid.current_preview_tower = new_tower
 		turrent_grid.add_child(new_tower)
+		current_price = 50
+		emit_signal("tower_price", current_price)
 
 var shrine_scene = load("res://scenes/towers/health_shrine.tscn")
 func _on_BuyHS_pressed() -> void:
@@ -34,6 +40,8 @@ func _on_BuyHS_pressed() -> void:
 		new_tower.set_preview(true)
 		turrent_grid.current_preview_tower = new_tower
 		turrent_grid.add_child(new_tower)
+		current_price = 250
+		emit_signal("tower_price", current_price)
 
 func _on_SaveButton_pressed():
 	SaveScript.save_gamestate()
