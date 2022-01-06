@@ -14,7 +14,7 @@ func _process(_delta):
 		var preview_pos = self.map_to_world( tower_coord ) + TOWER_OFFSET
 		current_preview_tower.position = preview_pos
 		if Input.is_mouse_button_pressed( BUTTON_LEFT ):
-			if not tower_coord in tower_dictionary and tower_coord[1] == 4:
+			if not tower_coord in tower_dictionary and (tower_coord[1] == 4 or tower_coord[1] == 1):
 				tower_dictionary[tower_coord] = current_preview_tower
 				current_preview_tower.set_preview(false)
 				current_preview_tower.connect("disable_cat_turret", self, "_erase_building_slots")
@@ -25,8 +25,9 @@ func _process(_delta):
 			current_preview_tower = null
 
 func remove_preview():
-	current_preview_tower.queue_free()
-	current_preview_tower = null
+	if current_preview_tower != null:
+		current_preview_tower.queue_free()
+		current_preview_tower = null
 
 func _erase_building_slots(current_position): 
 	tower_dictionary.erase(current_position)

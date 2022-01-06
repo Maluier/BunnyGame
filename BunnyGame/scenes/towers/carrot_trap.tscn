@@ -27,6 +27,7 @@ extents = Vector2( 4.5, 5.5 )
 [node name="carrot_trap" type="Node2D" groups=["Persist", "Tower"]]
 script = ExtResource( 9 )
 _health = 40
+_healing_threshold = 20
 _fire_delay = 1.5
 
 [node name="shooting_sprite" type="AnimatedSprite" parent="."]

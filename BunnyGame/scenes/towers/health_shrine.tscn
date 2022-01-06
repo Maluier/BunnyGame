@@ -40,6 +40,7 @@ _fire_delay = 0.0
 position = Vector2( 0, 2 )
 frames = SubResource( 1 )
 animation = "Trap"
+frame = 1
 playing = true
 
 [node name="hurt_box" type="Area2D" parent="."]

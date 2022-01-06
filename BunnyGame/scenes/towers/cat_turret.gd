@@ -10,13 +10,6 @@ var current_coord : Vector2 = Vector2.ZERO
 signal disable_cat_turret(current_coord) 
 
 
-func _process(delta: float) -> void:
-		if position.y <= 95:
-			$shooting_sprite.flip_v = true
-		else:
-			$shooting_sprite.flip_v = false
-
-
 ## Determine if the tower is for preview while placing only
 var is_preview_tower := false
 func set_preview(new_val: bool) -> void:
@@ -53,3 +46,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if _health <= 0:
 		emit_signal("disable_cat_turret", self.current_coord) 
 		queue_free()
+
+func _process(delta: float) -> void:
+	if is_preview_tower == true:
+		if position.y <= 95:
+			$shooting_sprite.flip_v = true
+		else:
+			$shooting_sprite.flip_v = false
