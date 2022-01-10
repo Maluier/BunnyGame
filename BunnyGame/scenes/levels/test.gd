@@ -42,6 +42,26 @@ func _on_BuyHS_pressed() -> void:
 		turrent_grid.add_child(new_tower)
 		current_price = 250
 		emit_signal("tower_price", current_price)
+		
+var mg_scene = load("res://scenes/towers/machine_gun.tscn")
+func _on_BuyMG_pressed() -> void:
+	if Globals.hayballs >= 70:
+		var new_tower = mg_scene.instance()
+		new_tower.set_preview(true)
+		turrent_grid.current_preview_tower = new_tower
+		turrent_grid.add_child(new_tower)
+		current_price = 70
+		emit_signal("tower_price", current_price)
+		
+var haymaker_scene = load("res://scenes/towers/carrot_eaters.tscn")
+func _on_BuyHM_pressed() -> void:
+	if Globals.hayballs >= 500:
+		var new_tower = haymaker_scene.instance()
+		new_tower.set_preview(true)
+		turrent_grid.current_preview_tower = new_tower
+		turrent_grid.add_child(new_tower)
+		current_price = 500
+		emit_signal("tower_price", current_price)
 
 func _on_SaveButton_pressed():
 	SaveScript.save_gamestate()
@@ -51,3 +71,5 @@ func _on_Load_pressed():
 
 func _on_Root_disable_build_mode(trigger_bool):
 	$TurrentGrid.remove_preview()
+
+

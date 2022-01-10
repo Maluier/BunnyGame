@@ -37,8 +37,8 @@ __meta__ = {
 }
 
 [node name="Lives" type="Label" parent="CanvasLayer/HUD" index="0"]
-margin_left = 3.0
-margin_right = 60.0
+margin_left = 8.0
+margin_right = 65.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Lives: 10"
@@ -49,9 +49,9 @@ __meta__ = {
 [node name="Hayballs" type="Label" parent="CanvasLayer/HUD" index="1"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -133.0
+margin_left = -161.0
 margin_top = 1.0
-margin_right = -51.0
+margin_right = -79.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hayballs"
@@ -69,36 +69,61 @@ scale = Vector2( 0.33, -0.33 )
 margin_bottom = -18.0
 script = ExtResource( 6 )
 
+[node name="Towers" parent="CanvasLayer/UI" index="0"]
+margin_left = -65.0
+margin_right = -1.0
+
 [node name="Scoll" parent="CanvasLayer/UI/Towers" index="0"]
+margin_right = 64.0
 margin_bottom = 162.0
 
 [node name="Grid" parent="CanvasLayer/UI/Towers/Scoll" index="0"]
+margin_right = 64.0
 margin_bottom = 162.0
 
 [node name="BuyCT" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="0"]
-margin_right = 18.0
+margin_right = 30.0
 margin_bottom = 19.0
-text = "1"
+text = "30"
 
 [node name="BuyCS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="1"]
-margin_left = 22.0
-margin_right = 40.0
+margin_left = 34.0
+margin_right = 64.0
 margin_bottom = 19.0
-text = "2"
+text = "50"
 
-[node name="BuyHS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="2"]
+[node name="BuyMG" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="2"]
 margin_top = 23.0
-margin_right = 18.0
+margin_right = 30.0
 margin_bottom = 42.0
-text = "3"
+text = "70"
+
+[node name="BuyHS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="3"]
+margin_left = 34.0
+margin_top = 23.0
+margin_right = 64.0
+margin_bottom = 42.0
+text = "250"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyHM" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="4"]
+margin_top = 46.0
+margin_right = 30.0
+margin_bottom = 65.0
+text = "500"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Save" type="Button" parent="CanvasLayer/UI" index="1"]
 anchor_left = 0.16
 anchor_top = 0.691358
 anchor_right = 0.16
 anchor_bottom = 0.691358
-margin_left = 226.8
-margin_right = 262.8
+margin_left = 222.8
+margin_right = 258.8
 margin_bottom = 19.0
 text = "save"
 __meta__ = {
@@ -106,9 +131,9 @@ __meta__ = {
 }
 
 [node name="Load" type="Button" parent="CanvasLayer/UI" index="2"]
-margin_left = 278.0
+margin_left = 274.0
 margin_top = 137.0
-margin_right = 314.0
+margin_right = 310.0
 margin_bottom = 156.0
 text = "Load"
 __meta__ = {
@@ -119,6 +144,8 @@ __meta__ = {
 [connection signal="disable_build_mode" from="CanvasLayer/HUD/Root" to="CanvasLayer/UI" method="_on_Root_disable_build_mode"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCT" to="." method="_on_Tower_purchased"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCS" to="." method="_on_BuyCS_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyMG" to="." method="_on_BuyMG_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyHS" to="." method="_on_BuyHS_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyHM" to="." method="_on_BuyHM_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Save" to="." method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Load" to="." method="_on_Load_pressed"]
