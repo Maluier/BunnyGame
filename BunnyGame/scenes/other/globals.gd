@@ -2,7 +2,8 @@ extends Node
 
 signal score_updated
 
-var hayballs = 100 setget _set_hayballs
+var hayballs = 500 setget _set_hayballs
+var healing = 0
 
 func _ready():
 	pass

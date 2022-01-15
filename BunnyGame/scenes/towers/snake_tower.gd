@@ -1,9 +1,9 @@
 extends Node2D
 
 export var _health = 10
-export var _healing = 5
 export var _fire_delay := 5.0
 onready var _fire_timer = $fire_timer
+onready var _max_health = _health
 ## Record this tower's coordinate on the grid
 var current_coord : Vector2 = Vector2.ZERO
 
@@ -30,7 +30,17 @@ func save():
 	}
 	return save_dict
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
+var _play = false
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	_play = true
+		
+func _on_hitbox_area_exited(area: Area2D) -> void:
+	$hitbox.damage += 2
+	if $hitbox.damage >= 25:
+		$hitbox.damage = 25
+	_play = false
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if is_preview_tower: return
 	_health -= area.damage
 	if _health <= 0:
@@ -38,13 +48,20 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
-	if is_preview_tower == true:	
+	if is_preview_tower == true:
 		if position.y <= 95:
 			$shooting_sprite.flip_v = true
 		else:
 			$shooting_sprite.flip_v = false
 	else:
-		if $shooting_sprite.frame == 0:
-			Globals.healing = _healing
-		else:
-			Globals.healing = 0
+		if _health <= _max_health:
+			_health += Globals.healing
+			if _health > _max_health:
+				_health = _max_health
+	
+	if _play == true:
+		$shooting_sprite.play()
+	else:
+		$shooting_sprite.stop()
+		$shooting_sprite.frame = 3
+				

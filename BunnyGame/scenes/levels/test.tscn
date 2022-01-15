@@ -98,19 +98,29 @@ margin_right = 30.0
 margin_bottom = 42.0
 text = "70"
 
-[node name="BuyHS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="3"]
+[node name="BuyST" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="3"]
 margin_left = 34.0
 margin_top = 23.0
 margin_right = 64.0
 margin_bottom = 42.0
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyHS" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="4"]
+margin_top = 46.0
+margin_right = 30.0
+margin_bottom = 65.0
 text = "250"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuyHM" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="4"]
+[node name="BuyHM" type="Button" parent="CanvasLayer/UI/Towers/Scoll/Grid" index="5"]
+margin_left = 34.0
 margin_top = 46.0
-margin_right = 30.0
+margin_right = 64.0
 margin_bottom = 65.0
 text = "500"
 __meta__ = {
@@ -145,6 +155,7 @@ __meta__ = {
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCT" to="." method="_on_Tower_purchased"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyCS" to="." method="_on_BuyCS_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyMG" to="." method="_on_BuyMG_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyST" to="." method="_on_BuyST_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyHS" to="." method="_on_BuyHS_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Towers/Scoll/Grid/BuyHM" to="." method="_on_BuyHM_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/Save" to="." method="_on_SaveButton_pressed"]

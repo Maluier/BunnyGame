@@ -27,7 +27,6 @@ extents = Vector2( 4.5, 5.5 )
 [node name="carrot_trap" type="Node2D" groups=["Persist", "Tower"]]
 script = ExtResource( 9 )
 _health = 40
-_healing_threshold = 20
 _fire_delay = 1.5
 
 [node name="shooting_sprite" type="AnimatedSprite" parent="."]
@@ -35,6 +34,9 @@ frames = SubResource( 1 )
 animation = "Trap"
 frame = 6
 playing = true
+
+[node name="fire_timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="hurt_box" type="Area2D" parent="."]
 collision_layer = 0
@@ -49,9 +51,6 @@ shape = SubResource( 4 )
 [node name="firing_position" type="Node2D" parent="."]
 visible = false
 position = Vector2( -19, 0 )
-
-[node name="fire_timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="vision" type="Area2D" parent="."]
 collision_layer = 0

@@ -62,6 +62,16 @@ func _on_BuyHM_pressed() -> void:
 		turrent_grid.add_child(new_tower)
 		current_price = 500
 		emit_signal("tower_price", current_price)
+		
+var snake_scene = load("res://scenes/towers/snake_tower.tscn")
+func _on_BuyST_pressed() -> void:
+	if Globals.hayballs >= 100:
+		var new_tower = snake_scene.instance()
+		new_tower.set_preview(true)
+		turrent_grid.current_preview_tower = new_tower
+		turrent_grid.add_child(new_tower)
+		current_price = 100
+		emit_signal("tower_price", current_price)
 
 func _on_SaveButton_pressed():
 	SaveScript.save_gamestate()

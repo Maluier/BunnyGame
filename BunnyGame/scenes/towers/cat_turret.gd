@@ -4,6 +4,7 @@ export var _fire_delay := 5.0
 var projectile := preload("res://scenes/towers/projectile_cat_turret.tscn")
 onready var _firing_position = $firing_position
 onready var _fire_timer = $fire_timer
+onready var _max_health = _health
 ## Record this tower's coordinate on the grid
 var current_coord : Vector2 = Vector2.ZERO
 
@@ -53,3 +54,8 @@ func _process(delta: float) -> void:
 			$shooting_sprite.flip_v = true
 		else:
 			$shooting_sprite.flip_v = false
+	else:
+		if _health <= _max_health:
+			_health += Globals.healing
+			if _health > _max_health:
+				_health = _max_health
